@@ -4,14 +4,17 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'temperatureConverter'
 })
 export class TemperatureConverterPipe implements PipeTransform {
-
+  metric = localStorage.getItem('Metric') || 'Metric'
   transform(value: number) {
-    if (localStorage.getItem('Metric') === 'Metric') {
-      return value.toFixed() + '°C';
-    } else {
-      var tempareature = (value * 1.8) + 32;
-      return tempareature.toFixed() + '°F';
+    if (value) {
+      if (this.metric === 'Metric') {
+        return value.toFixed() + '°C';
+      } else {
+        var tempareature = (value * 1.8) + 32;
+        return tempareature.toFixed() + '°F';
+      }
     }
+
 
   }
 

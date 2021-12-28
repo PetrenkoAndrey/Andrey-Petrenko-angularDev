@@ -1,4 +1,4 @@
-<div class="box" *ngIf="weatherItems.length > 0; else noData">
+<div class="box" *ngIf="weatherItems?.length > 0; else noData">
   <div class="faworite-wrapper" *ngFor="let item of weatherItems">
     <app-favorite-item
       [item]="item"

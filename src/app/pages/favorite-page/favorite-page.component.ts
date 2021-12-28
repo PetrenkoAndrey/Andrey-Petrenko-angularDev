@@ -8,7 +8,7 @@ import { FavoritesService } from 'src/app/services/favorites.service';
 })
 export class FavoritePageComponent implements OnInit {
 
-  weatherItems = JSON.parse(localStorage.getItem('favorites'))
+  weatherItems = JSON.parse(localStorage.getItem('favorites')) || []
 
   constructor() { }
 
@@ -16,7 +16,7 @@ export class FavoritePageComponent implements OnInit {
   }
 
   removeFavorites(city) {
-    this.weatherItems = this.weatherItems.filter(p => p.city !== city);;
+    this.weatherItems = this.weatherItems.filter(p => p.city !== city);
   }
 
 }

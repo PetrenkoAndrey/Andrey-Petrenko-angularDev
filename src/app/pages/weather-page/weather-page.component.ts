@@ -20,7 +20,7 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.city = history.state.city || 'Kyiv'
-    //this.searchLocation(this.city)
+    this.searchLocation(this.city)
 
   }
 
