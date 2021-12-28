@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class="box1">
+    <h3>Location: {{ city }}</h3>
+    <h3>
+      Temperature:
+      {{ currentWeather?.Temperature?.Metric?.Value | temperatureConverter }}
+    </h3>
+    <h5>
+      Date: {{ currentWeather?.LocalObservationDateTime | date: "medium" }}
+    </h5>
+  </div>
+  <div class="box2">
+    <div class="favorite">
+      <mat-icon>
+        {{ isFavorites(city) ? "favorite" : "favorite_border" }}
+      </mat-icon>
+      <button
+        mat-flat-button
+        color="primary"
+        type="button"
+        (click)="setFavorites()"
+      >
+        {{ !isFavorites(city) ? "Add to Favorites" : "Remove from Favorites" }}
+      </button>
+    </div>
+  </div>
+  <div class="box3">
+    <h1>{{ currentWeather?.WeatherText }}</h1>
+  </div>
+</div>

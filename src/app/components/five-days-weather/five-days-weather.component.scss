@@ -1,0 +1,14 @@
+.example-card {
+  max-width: 200px;
+  margin: 10px;
+}
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box div {
+  width: 20%;
+  height: 100px;
+}

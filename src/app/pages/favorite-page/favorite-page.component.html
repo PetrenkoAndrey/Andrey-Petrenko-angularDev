@@ -1,0 +1,12 @@
+<div class="box" *ngIf="weatherItems.length > 0; else noData">
+  <div class="faworite-wrapper" *ngFor="let item of weatherItems">
+    <app-favorite-item
+      [item]="item"
+      (remove)="removeFavorites($event)"
+    ></app-favorite-item>
+  </div>
+</div>
+
+<ng-template #noData>
+  <div class="blank"><h2>Favorite cities not added yet</h2></div>
+</ng-template>

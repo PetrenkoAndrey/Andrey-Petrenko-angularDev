@@ -1,0 +1,33 @@
+<mat-toolbar color="primary">
+  <span>My Weather App</span>
+  <span class="example-spacer"> </span>
+
+  <button
+    mat-button
+    class="example-icon home-icon"
+    aria-label="Example icon-button with home icon"
+    routerLink="/weather"
+  >
+    <mat-icon>home</mat-icon>
+    <span>Home</span>
+  </button>
+  <button
+    mat-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with favorite icon"
+    routerLink="/favorites"
+  >
+    <mat-icon>favorite</mat-icon>
+    <span>Favorites</span>
+  </button>
+  <div class="mat-button">
+    <span
+      >&deg;F &nbsp;<mat-slide-toggle
+        [checked]="isMetric"
+        (change)="metricChange()"
+      >
+      </mat-slide-toggle
+    ></span>
+    &deg;С
+  </div>
+</mat-toolbar>

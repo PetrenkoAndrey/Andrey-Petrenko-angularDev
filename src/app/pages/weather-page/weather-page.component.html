@@ -1,0 +1,48 @@
+<div class="search">
+  <form class="search-form">
+    <mat-form-field>
+      <button matPrefix mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+      <input
+        matInput
+        type="search"
+        placeholder="Search here"
+        class="search-input"
+        [(ngModel)]="city"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <button
+        *ngIf="city"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="city = ''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      (click)="searchLocation(city)"
+    >
+      Search
+    </button>
+  </form>
+</div>
+
+<div *ngIf="!loading; else noData">
+  <app-current-weather
+    [city]="location?.LocalizedName"
+    [currentWeather]="currentWeather"
+  ></app-current-weather>
+  <app-five-days-weather
+    [dailyForecast]="dailyForecast"
+  ></app-five-days-weather>
+</div>
+
+<ng-template #noData>
+  <div class="blank"><mat-spinner></mat-spinner></div>
+</ng-template>
