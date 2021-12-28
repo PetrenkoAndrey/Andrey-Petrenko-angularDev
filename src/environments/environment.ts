@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URI: 'http://dataservice.accuweather.com',
+  API_URI: 'https://dataservice.accuweather.com',
   API_KEY: '00Fnn9QIUGbyYnV2NLZDNZMmaaTpMnyM'
 };
 
