@@ -6,7 +6,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { ILocationItem } from 'src/app/interfaces/ilocation-item';
 import { ICurrentWeatherItem } from 'src/app/interfaces/icurrent-weather-item'
-import { IFiveDaysItem } from 'src/app/interfaces/ifive-days-item';
+import { IFiveDaysItem } from 'src/app/interfaces/ifive-days';
 
 @Component({
   selector: 'app-home-page',

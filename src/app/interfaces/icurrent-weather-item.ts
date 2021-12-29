@@ -1,4 +1,5 @@
-import { ITemperature } from "./ifive-days-item";
+import { ITemperature } from "./ifive-days";
+
 export interface ICurrentWeatherItem {
     EpochTime: number,
     HasPrecipitation: boolean,
