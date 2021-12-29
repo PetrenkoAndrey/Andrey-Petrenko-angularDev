@@ -1,3 +1,4 @@
+import { ITemperature } from "./ifive-days-item";
 export interface ICurrentWeatherItem {
     EpochTime: number,
     HasPrecipitation: boolean,
@@ -7,16 +8,8 @@ export interface ICurrentWeatherItem {
     MobileLink: string,
     PrecipitationType: null,
     Temperature: {
-        Metric: {
-            Value: number,
-            Unit: string,
-            UnitType: number
-        },
-        Imperial: {
-            Value: number,
-            Unit: string,
-            UnitType: number
-        }
+        Metric: ITemperature,
+        Imperial: ITemperature
     }
     WeatherIcon: number,
     WeatherText: string

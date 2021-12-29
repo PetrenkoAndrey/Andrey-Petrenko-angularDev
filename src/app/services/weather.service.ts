@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { ICurrentWeatherItem } from '../interfaces/icurrent-weather-item';
+import { IFiveDays } from '../interfaces/ifive-days';
 import { ILocationItem } from '../interfaces/ilocation-item';
 
 @Injectable({
@@ -23,9 +24,9 @@ export class WeatherService {
     return this.http.get<Array<ICurrentWeatherItem>>(URI)
   }
 
-  public get5DaysWeather(locationId): Observable<any> {
+  public get5DaysWeather(locationId: string): Observable<IFiveDays> {
     const URI = this.API_URI + '/forecasts/v1/daily/5day/' + locationId + '?apikey=' + this.API_KEY + '&metric=true'
-    return this.http.get(URI)
+    return this.http.get<IFiveDays>(URI)
   }
 
 

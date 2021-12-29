@@ -6,6 +6,7 @@ import { NotificationService } from 'src/app/services/notification.service';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { ILocationItem } from 'src/app/interfaces/ilocation-item';
 import { ICurrentWeatherItem } from 'src/app/interfaces/icurrent-weather-item'
+import { IFiveDaysItem } from 'src/app/interfaces/ifive-days-item';
 
 @Component({
   selector: 'app-home-page',
@@ -16,13 +17,13 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
   city: string
   location: ILocationItem
   currentWeather: ICurrentWeatherItem
-  fiveDaysWeather = []
+  fiveDaysWeather: IFiveDaysItem[]
   loading: boolean = true
   constructor(private weatherService: WeatherService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.city = history.state.city || 'Kyiv'
-    //this.searchLocation(this.city)
+    this.searchLocation(this.city)
   }
 
   ngOnDestroy() { }

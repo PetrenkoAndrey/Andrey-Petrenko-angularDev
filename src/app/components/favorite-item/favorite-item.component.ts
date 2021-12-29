@@ -9,7 +9,7 @@ import { FavoritesService } from 'src/app/services/favorites.service';
 })
 export class FavoriteItemComponent implements OnInit {
   @Input() favoriteItem: IFavoriteItem;
-  @Output() remove: EventEmitter<any> = new EventEmitter();
+  @Output() remove: EventEmitter<string> = new EventEmitter();
 
   constructor(private favoriteService: FavoritesService) { }
   ngOnInit(): void {

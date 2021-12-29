@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IFiveDaysItem } from 'src/app/interfaces/ifive-days-item';
 
 @Component({
   selector: 'app-five-days-weather',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./five-days-weather.component.scss']
 })
 export class FiveDaysWeatherComponent implements OnInit {
-  @Input() fiveDaysWeather: any;
+  @Input() fiveDaysWeather: IFiveDaysItem[];
 
   constructor() { }
 
