@@ -33,7 +33,7 @@
   </form>
 </div>
 
-<div *ngIf="!loading; else noData">
+<div *ngIf="!loading; else loader">
   <app-current-weather
     [city]="location?.LocalizedName"
     [currentWeather]="currentWeather"
@@ -43,6 +43,6 @@
   ></app-five-days-weather>
 </div>
 
-<ng-template #noData>
-  <div class="no-data-message"><mat-spinner></mat-spinner></div>
+<ng-template #loader>
+  <div class="loader"><mat-spinner></mat-spinner></div>
 </ng-template>
