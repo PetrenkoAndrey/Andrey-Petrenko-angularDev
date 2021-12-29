@@ -10,7 +10,7 @@ export class TemperatureConverterPipe implements PipeTransform {
       if (this.metric === 'Metric') {
         return value.toFixed() + '°C';
       } else {
-        var tempareature = (value * 1.8) + 32;
+        let tempareature = (value * 1.8) + 32;
         return tempareature.toFixed() + '°F';
       }
     }

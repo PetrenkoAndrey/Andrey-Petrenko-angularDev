@@ -39,10 +39,10 @@
     [currentWeather]="currentWeather"
   ></app-current-weather>
   <app-five-days-weather
-    [dailyForecast]="dailyForecast"
+    [fiveDaysWeather]="fiveDaysWeather"
   ></app-five-days-weather>
 </div>
 
 <ng-template #noData>
-  <div class="blank"><mat-spinner></mat-spinner></div>
+  <div class="no-data-message"><mat-spinner></mat-spinner></div>
 </ng-template>

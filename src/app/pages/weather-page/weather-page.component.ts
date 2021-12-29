@@ -14,7 +14,7 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
   city: string
   location: any
   currentWeather = {}
-  dailyForecast = []
+  fiveDaysWeather = []
   loading = true
   constructor(private weatherService: WeatherService, private notificationService: NotificationService) { }
 
@@ -37,8 +37,8 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
           if (location && location.length > 0) {
             this.location = location[0];
             const currentWeather = this.weatherService.getCurrenWeather(location[0].Key);
-            const dailyForecast = this.weatherService.get5DayWeather(location[0].Key);
-            return forkJoin([currentWeather, dailyForecast])
+            const fiveDaysWeather = this.weatherService.get5DayWeather(location[0].Key);
+            return forkJoin([currentWeather, fiveDaysWeather])
           } else {
             this.notificationService.error("Not found any location")
             return []
@@ -47,7 +47,7 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
       )
         .subscribe(result => {
           this.currentWeather = result[0][0]
-          this.dailyForecast = result[1].DailyForecasts
+          this.fiveDaysWeather = result[1].DailyForecasts
         },
           error => {
             this.notificationService.error(error.statusText)

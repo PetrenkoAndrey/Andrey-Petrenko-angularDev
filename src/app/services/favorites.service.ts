@@ -16,7 +16,7 @@ export class FavoritesService {
   setFavorites(favoriteItem) {
     let favorites = this.getFavorites()
     if (this.isFavorites(favoriteItem.city)) {
-      var i = favorites.length;
+      let i = favorites.length;
       while (i--) {
         if (favorites[i]
           && favorites[i].hasOwnProperty('city')

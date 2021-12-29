@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="box1">
+  <div class="city-details">
     <h3>Location: {{ city }}</h3>
     <h3>
       Temperature:
@@ -9,7 +9,7 @@
       Date: {{ currentWeather?.LocalObservationDateTime | date: "medium" }}
     </h5>
   </div>
-  <div class="box2">
+  <div class="favorite-box">
     <div class="favorite">
       <mat-icon>
         {{ isFavorites(city) ? "favorite" : "favorite_border" }}
@@ -24,7 +24,7 @@
       </button>
     </div>
   </div>
-  <div class="box3">
+  <div class="current-weather">
     <h1>{{ currentWeather?.WeatherText }}</h1>
   </div>
 </div>
