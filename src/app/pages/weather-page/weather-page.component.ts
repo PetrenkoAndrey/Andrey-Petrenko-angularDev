@@ -4,6 +4,8 @@ import { finalize, mergeMap } from 'rxjs/operators'
 import { forkJoin } from 'rxjs';
 import { NotificationService } from 'src/app/services/notification.service';
 import { untilDestroyed } from 'ngx-take-until-destroy';
+import { ILocationItem } from 'src/app/interfaces/ilocation-item';
+import { ICurrentWeatherItem } from 'src/app/interfaces/icurrent-weather-item'
 
 @Component({
   selector: 'app-home-page',
@@ -12,32 +14,31 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
 })
 export class WeatherPageComponent implements OnInit, OnDestroy {
   city: string
-  location: any
-  currentWeather = {}
+  location: ILocationItem
+  currentWeather: ICurrentWeatherItem
   fiveDaysWeather = []
-  loading = true
+  loading: boolean = true
   constructor(private weatherService: WeatherService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.city = history.state.city || 'Kyiv'
-    this.searchLocation(this.city)
-
+    //this.searchLocation(this.city)
   }
 
   ngOnDestroy() { }
 
-  searchLocation(city) {
+  searchLocation(city: string) {
     this.loading = true
     if (city) {
       this.city = city
       this.weatherService.getLocations(this.city).pipe(
         untilDestroyed(this),
         finalize(() => this.loading = false),
-        mergeMap(location => {
-          if (location && location.length > 0) {
-            this.location = location[0];
-            const currentWeather = this.weatherService.getCurrenWeather(location[0].Key);
-            const fiveDaysWeather = this.weatherService.get5DayWeather(location[0].Key);
+        mergeMap(locations => {
+          if (locations && locations.length > 0) {
+            this.location = locations[0];
+            const currentWeather = this.weatherService.getCurrenWeather(this.location.Key);
+            const fiveDaysWeather = this.weatherService.get5DaysWeather(this.location.Key);
             return forkJoin([currentWeather, fiveDaysWeather])
           } else {
             this.notificationService.error("Not found any location")
@@ -55,9 +56,5 @@ export class WeatherPageComponent implements OnInit, OnDestroy {
     } else {
       this.notificationService.error("Enter any location")
     }
-
-
   }
-
-
 }

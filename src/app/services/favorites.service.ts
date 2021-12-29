@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { IFavoriteItem } from '../interfaces/ifavorite-item';
 import { NotificationService } from './notification.service';
 
 @Injectable({
@@ -9,11 +10,11 @@ export class FavoritesService {
   constructor(private notificationService: NotificationService,) { }
 
 
-  getFavorites() {
+  private getFavorites(): Array<IFavoriteItem> {
     return JSON.parse(localStorage.getItem('favorites')) || []
   }
 
-  setFavorites(favoriteItem) {
+  private setFavorites(favoriteItem: IFavoriteItem): Array<IFavoriteItem> {
     let favorites = this.getFavorites()
     if (this.isFavorites(favoriteItem.city)) {
       let i = favorites.length;
@@ -36,8 +37,8 @@ export class FavoritesService {
     return this.getFavorites()
   }
 
-  isFavorites(city) {
+  private isFavorites(city: string): boolean {
     let favorites = this.getFavorites()
-    return favorites.find(x => x.city === city)
+    return !!favorites.find(x => x.city === city)
   }
 }

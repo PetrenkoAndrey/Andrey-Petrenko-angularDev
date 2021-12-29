@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ICurrentWeatherItem } from 'src/app/interfaces/icurrent-weather-item';
+import { IFavoriteItem } from 'src/app/interfaces/ifavorite-item';
 import { FavoritesService } from 'src/app/services/favorites.service';
 
 @Component({
@@ -8,7 +10,8 @@ import { FavoritesService } from 'src/app/services/favorites.service';
 })
 export class CurrentWeatherComponent implements OnInit {
   @Input() city: string;
-  @Input() currentWeather: any;
+  @Input() locationId: string;
+  @Input() currentWeather: ICurrentWeatherItem;
 
 
   constructor(private favoriteService: FavoritesService) { }
@@ -16,18 +19,19 @@ export class CurrentWeatherComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  isFavorites(city) {
+  private isFavorites(city: string): boolean {
     return this.favoriteService.isFavorites(city)
   }
 
-  setFavorites() {
-    let favoriteItem = {
+  private setFavorites(): Array<IFavoriteItem> {
+    let favoriteItem: IFavoriteItem = {
       city: this.city,
+      id: this.locationId,
       temperature: this.currentWeather?.Temperature?.Metric?.Value,
       weather: this.currentWeather?.WeatherText,
       isFavorite: true
     }
-    this.favoriteService.setFavorites(favoriteItem)
+    return this.favoriteService.setFavorites(favoriteItem)
 
   }
 

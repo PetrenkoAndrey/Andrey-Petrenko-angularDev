@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FavoritesService } from 'src/app/services/favorites.service';
-
+import { IFavoriteItem } from 'src/app/interfaces/ifavorite-item';
 @Component({
   selector: 'app-favorite-page',
   templateUrl: './favorite-page.component.html',
@@ -8,7 +7,7 @@ import { FavoritesService } from 'src/app/services/favorites.service';
 })
 export class FavoritePageComponent implements OnInit {
 
-  weatherItems = JSON.parse(localStorage.getItem('favorites')) || []
+  favoriteItems: Array<IFavoriteItem> = JSON.parse(localStorage.getItem('favorites')) || []
 
   constructor() { }
 
@@ -16,7 +15,7 @@ export class FavoritePageComponent implements OnInit {
   }
 
   removeFavorites(city) {
-    this.weatherItems = this.weatherItems.filter(p => p.city !== city);
+    this.favoriteItems = this.favoriteItems.filter(p => p.city !== city);
   }
 
 }

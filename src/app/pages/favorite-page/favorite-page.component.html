@@ -1,7 +1,7 @@
-<div class="box" *ngIf="weatherItems?.length > 0; else noData">
-  <div class="faworite-wrapper" *ngFor="let item of weatherItems">
+<div class="box" *ngIf="favoriteItems?.length > 0; else noData">
+  <div class="faworite-wrapper" *ngFor="let item of favoriteItems">
     <app-favorite-item
-      [item]="item"
+      [favoriteItem]="item"
       (remove)="removeFavorites($event)"
     ></app-favorite-item>
   </div>

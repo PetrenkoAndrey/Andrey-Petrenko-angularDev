@@ -1,12 +1,12 @@
 <mat-card class="example-card">
   <mat-card-title
-    ><a [routerLink]="['/weather']" [state]="{ city: item.city }">{{
-      item.city
+    ><a [routerLink]="['/weather']" [state]="{ city: favoriteItem.city }">{{
+      favoriteItem.city
     }}</a>
   </mat-card-title>
   <mat-card-content>
-    <p>{{ item.temperature | temperatureConverter }}</p>
-    <p>{{ item.weather }}</p>
+    <p>{{ favoriteItem.temperature | temperatureConverter }}</p>
+    <p>{{ favoriteItem.weather }}</p>
   </mat-card-content>
   <mat-card-actions>
     <button
@@ -16,7 +16,7 @@
       (click)="favoriteChange()"
     >
       <mat-icon>
-        {{ item.isFavorite ? "favorite" : "favorite_border" }}
+        {{ favoriteItem.isFavorite ? "favorite" : "favorite_border" }}
       </mat-icon>
     </button>
   </mat-card-actions>

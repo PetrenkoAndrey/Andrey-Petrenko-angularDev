@@ -36,6 +36,7 @@
 <div *ngIf="!loading; else loader">
   <app-current-weather
     [city]="location?.LocalizedName"
+    [locationId]="location?.Key"
     [currentWeather]="currentWeather"
   ></app-current-weather>
   <app-five-days-weather
