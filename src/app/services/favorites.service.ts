@@ -10,11 +10,11 @@ export class FavoritesService {
   constructor(private notificationService: NotificationService,) { }
 
 
-  private getFavorites(): Array<IFavoriteItem> {
+  public getFavorites(): Array<IFavoriteItem> {
     return JSON.parse(localStorage.getItem('favorites')) || []
   }
 
-  private setFavorites(favoriteItem: IFavoriteItem): Array<IFavoriteItem> {
+  public setFavorites(favoriteItem: IFavoriteItem): Array<IFavoriteItem> {
     let favorites = this.getFavorites()
     if (this.isFavorites(favoriteItem.city)) {
       let i = favorites.length;
@@ -37,7 +37,7 @@ export class FavoritesService {
     return this.getFavorites()
   }
 
-  private isFavorites(city: string): boolean {
+  public isFavorites(city: string): boolean {
     let favorites = this.getFavorites()
     return !!favorites.find(x => x.city === city)
   }

@@ -14,7 +14,7 @@ export class NotificationService {
     this.openSnackBar(message, '', 'success-snackbar');
   }
 
-  error(message: string,) {
+  public error(message: string,) {
     this.openSnackBar(message, '', 'error-snackbar');
   }
 

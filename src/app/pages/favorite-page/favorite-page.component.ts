@@ -14,8 +14,8 @@ export class FavoritePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  removeFavorites(city) {
-    this.favoriteItems = this.favoriteItems.filter(p => p.city !== city);
+  removeFavorites(city: string): Array<IFavoriteItem> {
+    return this.favoriteItems = this.favoriteItems.filter(p => p.city !== city);
   }
 
 }

@@ -19,11 +19,11 @@ export class CurrentWeatherComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  private isFavorites(city: string): boolean {
+  isFavorites(city: string): boolean {
     return this.favoriteService.isFavorites(city)
   }
 
-  private setFavorites(): Array<IFavoriteItem> {
+  setFavorites(): Array<IFavoriteItem> {
     let favoriteItem: IFavoriteItem = {
       city: this.city,
       id: this.locationId,

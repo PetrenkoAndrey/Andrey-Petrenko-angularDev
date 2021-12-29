@@ -6,11 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-  metric = localStorage.getItem('Metric') || 'Metric'
-  isMetric = this.metric === 'Metric' ? true : false;
+  metric: string = localStorage.getItem('Metric') || 'Metric'
+  isMetric: boolean = this.metric === 'Metric' ? true : false;
   constructor() { }
 
-  setMetric(value) {
+  setMetric(value: string) {
     localStorage.setItem('Metric', value)
   }
 
